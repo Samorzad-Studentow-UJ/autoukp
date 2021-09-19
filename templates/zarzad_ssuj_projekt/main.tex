@@ -1,0 +1,65 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[explicit]{titlesec}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{polski}
+\usepackage{polyglossia}
+\setdefaultlanguage{polish}
+\usepackage{graphicx}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{TeX Gyre Termes}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage[final]{pdfpages}
+
+\titleformat{\paragraph}{\centering\normalfont\large\bfseries}{}{0em}{#1 \theparagraph}
+\newcommand{\lexarticle}{\paragraph{\S}}
+\counterwithout{paragraph}{subsubsection}
+\setcounter{secnumdepth}{4}
+
+\newcommand{\VAR}[1]{\{\{ #1 \}\}}
+\newcommand{\BLOCK}[1]{\{\% #1 \$\}}
+
+\title{Uchwała}
+
+\begin{document}
+    \begin{center}
+        \includegraphics[height=4cm]{SS_UJ_CMYK_symetryczny}
+    \end{center}
+
+    \begin{center}
+        \large
+        \textbf{Uchwała nr \VAR{project.idx}}\\
+        \smallskip
+        Zarządu Samorządu Studentów\\
+        Uniwersytetu Jagiellońskiego\\
+        z dnia \VAR{date.strftime('%d %B %Y')} r. \\
+        \normalsize
+        \textbf{
+            \begin{description}[leftmargin=\widthof{w sprawie: .}]
+                \item[w sprawie:]
+                przyznania dotacji ze środków przeznaczonych przez uczelnię na sprawy studenckie.
+            \end{description}}
+    \end{center}
+
+    Na podstawie \S 38 ust. 1 pkt 2 \textit{Regulaminu Samorządu Studentów Uniwersytetu Jagiellońskiego z dnia 26 października 2010 r. (z~późn. zm.)} uchwala się, co następuje:
+
+    \lexarticle
+    \begin{enumerate}
+        \item Przyznaje się \VAR{project.entity} dotację ze środków przeznaczonych przez uczelnię na sprawy studenckie w wysokości \VAR{amount_spelled(project.amountReceived)} na realizację projektu o nazwie \textbf{,,\VAR{project.title}''}, o którym mowa we wniosku o sygnaturze \textbf{\VAR{project.signature}}.
+        \item Dotację przyznaje się w ramach \VAR{roman(project.category)} kategorii rocznego podziału środków przeznaczonych przez uczelnię na sprawy studenckie, przyznanych na działalność
+              \BLOCK{if category == 1}
+              regulaminową Samorządu Studentów Uniwersytetu Jagiellońskiego
+              \BLOCK{elif category == 2}
+              Wydziałowych Rad Samorządu Studentów Uniwersytetu Jagiellońskiego
+              \BLOCK{elif category == 4}
+              organizacji studenckich
+              \BLOCK{endif}
+              na rok \VAR{project.year}.
+    \end{enumerate}
+
+    \lexarticle
+    Uchwała wchodzi w życie z dniem podjęcia.
+
+\end{document}

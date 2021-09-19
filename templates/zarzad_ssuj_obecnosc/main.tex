@@ -1,0 +1,54 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[explicit]{titlesec}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{polski}
+\usepackage{polyglossia}
+\setdefaultlanguage{polish}
+\usepackage{graphicx}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{TeX Gyre Termes}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage[final]{pdfpages}
+\usepackage{parskip}
+
+\titleformat{\paragraph}{\centering\normalfont\large\bfseries}{}{0em}{#1 \theparagraph}
+\newcommand{\lexarticle}{\paragraph{\S}}
+\counterwithout{paragraph}{subsubsection}
+\setcounter{secnumdepth}{4}
+
+\newcommand{\VAR}[1]{\{\{ #1 \}\}}
+\newcommand{\BLOCK}[1]{\{\% #1 \$\}}
+
+\title{Lista obecności}
+
+\begin{document}
+    \begin{center}
+    \includegraphics[height=4cm]{SS_UJ_CMYK_symetryczny}
+    \end{center}
+
+    \begin{center}
+        \large
+        \textbf{Lista obecności}\\
+        \smallskip
+        z posiedzenia Zarządu\\
+        Samorządu Studentów Uniwersytetu Jagiellońskiego\\
+        z dnia \VAR{date.strftime('%d %B %Y')} r. \\
+        \normalsize
+    \end{center}
+
+    \bigskip\bigskip
+
+    \begin{center}
+    \begin{tabular}{|p{0.2cm}|p{14cm}|}
+    \hline & Czytelny Podpis\\
+    \BLOCK{for i in range(1, 16)}
+    \hline \VAR{i} &\rule{0cm}{1cm}\\
+    \BLOCK{endfor}
+    \hline
+    \end{tabular}
+    \end{center}
+
+\end{document}
