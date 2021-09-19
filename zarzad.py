@@ -80,4 +80,4 @@ for project in projects:
         render_pdf('zarzad_ssuj_projekt', {
             'project': project,
             'date': args.date,
-        }, os.path.join(args.out_dir, 'Uchwała_{}.pdf'.format(project.idx)))
+        }, os.path.join(args.out_dir, 'Z-U-17-2021-{:03}.pdf'.format(project.idx)))

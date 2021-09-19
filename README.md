@@ -1,4 +1,4 @@
-# Automatyczne UKP
+# Automatyczna UKP
 
 > Jaka uchwała wariacie?
 
