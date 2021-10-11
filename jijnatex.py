@@ -18,7 +18,7 @@ def amount_spelled(amount: float):
     return "\\textbf{{{}}} (słownie: \\textit{{{} złotych {:02}/100}})".format(
         locale.currency(amount, grouping=True).replace(' ', ' '),
         num2words(int(amount), lang='pl'),
-        int((amount * 100) % 100))
+        round((amount * 100) % 100))
 
 
 def render_template(template_name: str, context: Dict[str, Any]):
@@ -44,7 +44,7 @@ def render_template(template_name: str, context: Dict[str, Any]):
     }
     template = latex_jinja_env.get_template(os.path.join(template_name, TEX_MAIN), globals=latex_jinja_globals)
     rendered = template.render(**context)
-    return re.sub(r'(\s[oiwza]) ', r'\1 ', rendered)
+    return re.sub(r'(\s\w{1,2}) ', r'\1 ', rendered)
 
 
 def render_pdf(template_name: str, context: Dict[str, Any], out_pdf: str):
