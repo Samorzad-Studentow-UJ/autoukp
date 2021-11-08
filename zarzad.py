@@ -58,10 +58,10 @@ with open(args.projects) as projects_file:
             votesFor=int(row['za']),
             votesAgainst=int(row['przeciw']),
             votesAbstain=int(row['wstrzymujące']),
-            idx=next_idx if row['za'] > row['przeciw'] else -1,
+            idx=next_idx,
             remarks=row['uwagi do protokołu']
         ))
-        next_idx += 1 if row['za'] > row['przeciw'] else 0
+        next_idx += 1
 
 render_pdf('zarzad_ssuj_protokol', {
     'date': args.date,
@@ -76,8 +76,13 @@ render_pdf('zarzad_ssuj_obecnosc', {
 }, os.path.join(args.out_dir, 'Obecność.pdf'))
 
 for project in projects:
-    if project.idx > 0:
+    if project.votesFor > project.votesAgainst:
         render_pdf('zarzad_ssuj_projekt', {
+            'project': project,
+            'date': args.date,
+        }, os.path.join(args.out_dir, 'Z-U-2021-{:03}.pdf'.format(project.idx)))
+    else:
+        render_pdf('zarzad_ssuj_odmowa', {
             'project': project,
             'date': args.date,
         }, os.path.join(args.out_dir, 'Z-U-2021-{:03}.pdf'.format(project.idx)))
