@@ -80,7 +80,7 @@
         Głosów wstrzymujące: \VAR{project.votesAbstain}
     \end{center}
 
-    Wniosek został \textbf{\BLOCK{if project.idx > 0}przyjęty\BLOCK{else}odrzucony\BLOCK{endif}}.
+    Wniosek został \textbf{\BLOCK{if project.votesFor > project.votesAgainst}przyjęty\BLOCK{else}odrzucony\BLOCK{endif}}.
 
     \BLOCK{endfor}
 
