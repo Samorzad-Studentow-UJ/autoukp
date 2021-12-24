@@ -1,7 +1,7 @@
 UJ = 'Uniwersytetu Jagiellońskiego'
 SS = f'Samorządu Studentów'
 WRSS = 'Wydziałowej Radzie'
-WRSSy = {f'WRSS W{k}': f'{WRSS} {SS} Wydzialu {v} {UJ}' for k, v in {
+WRSSy = {f'WRSS W{k}': f'{WRSS} {SS} Wydziału {v} {UJ}' for k, v in {
     'PiA': 'Prawa i Administracji',
     'L': 'Lekarskiego',
     'Farm': 'Farmaceutycznego',
